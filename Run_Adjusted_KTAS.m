@@ -6,12 +6,12 @@ load('Two_Area_initial.mat')
 
 % start
 %INPUTS FOR STATISTICAL MODEL MCMC
-start = 0;
-number = 50000;%numberof trials
-network_tune = 0.1;
-tuning = 0.1; %adjust this numberso that the 'rate' which is printed is around 0.15 - 0.4
+start = 1;
+number = 1000  ;%numberof trials
+network_tune = 0.08;
+tuning = 0.08; %adjust this numberso that the 'rate' which is printed is around 0.15 - 0.4
 skips = 3
-network_skips =3;
+network_skips = 3;
 qq = 1;
 
 %_POWER SYSTEMS MODEL INPUTS_________________________________________________________________________________________________________

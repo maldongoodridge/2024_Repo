@@ -9,7 +9,7 @@ if start ==1
     y = load(['Cyber_Attack',n,'MW_BatLogN4.mat'],'DATA');
     
     network_attacks = y.DATA.(['D',n]);
-    current_network_attack = network_attacks{end}{1};
+    current_network_attack = network_attacks{end}(1);
     ROU_Sequence= y.DATA.(['BatSequence',n]);
     Nodal_Activation= y.DATA.(['BatNodeAct',n]);
     AGC_Time = y.DATA.(['AGC_Initial_Time',n]);
@@ -22,6 +22,7 @@ if start ==1
     Commanded_Attack_Sequence = y.DATA.(['commanded_attack_sequence',n]);
     time_of_day = y.DATA.(['Time_of_Day',n]);
     current_cumulative_attack = Total_Effective_Cyber_Attack(end,:) ;
+    current_particles = Commanded_Attack_Sequence{end}(:,Local_Load);
 else
     current_network_attack = initial_value;
     current_cumulative_attack = 5190*ones(1,NN); %choose a large number with low density in log normal
@@ -146,8 +147,8 @@ for i = 1:number
     
     prop_cumulative_attack = Cumulative_Attack;
     
-      accept = Region*prod(lognpdf(abs(prop_cumulative_attack(Local_Load)),1,4))/...
-      (prod(lognpdf(abs(current_cumulative_attack(Local_Load)),1,4)));
+      accept = Region*prod(lognpdf(abs(prop_cumulative_attack(Local_Load)),1,5))/...
+      (prod(lognpdf(abs(current_cumulative_attack(Local_Load)),1,5)));
 %     
    %  accept = Region*lognpdf(sum(prop_cumulative_attack(Local_Load)),1,4)/...
   %           (lognpdf(sum(current_cumulative_attack(Local_Load)),1,4));	
